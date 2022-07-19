@@ -18,6 +18,9 @@ Comment.init(
                 key: 'id',
             }
         },
+        content: {
+            type: DataTypes.STRING,
+        },
     },
     {
         sequelize,
