@@ -12,4 +12,4 @@ const userData = [
 ]
 const seedUser = () => User.bulkCreate(userData)
 
-module.exports = userData
+module.exports = seedUser

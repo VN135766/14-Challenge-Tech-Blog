@@ -18,4 +18,4 @@ const postData = [
 
 const seedPost = () => Post.bulkCreate(postData)
 
-module.exports = postData
+module.exports = seedData
