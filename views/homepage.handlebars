@@ -1,19 +1,14 @@
 {{>techblog-header}}
 <main id="homepage">
+    {{#each posts as |post|}}
     <div class="post">
         <div>
-            <h2 class="post_title">What is javascript?</h2>
-            <h6 class="post_info">Posted by Vn135766</h6>
+<h2 class="post_title" data-post-id="{{id}}">What is Javascript?</h2>
+            <h6 class="post_info">Posted by {{user.user}} on {{createdAt}}</h6>
         </div>
-        <h3 class="post_description">is a scripting language that enables you to create dynamically updating content, control multimedia, animate images, and pretty much everything else</h3>
-    </div>
-<div class="post">
-        <div>
-            <h2 class="post_title" data-post-id="2">What is javascript?</h2>
-            <h6 class="post_info">Posted by Vn135766</h6>
-        </div>
-        <h3 class="post_description">is a scripting language that enables you to create dynamically updating content, control multimedia, animate images, and pretty much everything else</h3>
-    </div>
+<h3 class="post_description">{{description}}</h3>
+</div>
+ {{/each}}
 </main>
 
 <script src="js/seeThread.js"></script>
