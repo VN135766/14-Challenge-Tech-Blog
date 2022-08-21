@@ -25,7 +25,7 @@ router.get('/newpost', async (req, res) => {
     res.render("newpost");
 });
 
-router.get('/editpost', async (req, res) => {
+router.get('/editpost/:id', async (req, res) => {
     res.render("editpost");
 });
 
