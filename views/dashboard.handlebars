@@ -1,10 +1,12 @@
 {{>yourdashboard-header}}
 <main id="homepage">
     <div id="yourPostsContainer">
-        <div>
-            <h3></h3>
-            <h3></h3>
+{{#each posts as |post|}}
+        <div" data-post-id="{{id}}">
+            <h3>{{title}}</h3>
+            <h3>{{createdAt}}</h3>
         </div>
+        {{/each}}
     </div>
     <button id="createPostButton">+ New Post</button>
 </main> 

@@ -26,7 +26,15 @@ router.get('/signup', async (req, res) => {
 });
 
 router.get('/dashboard', async (req, res) => {
-    res.render("dashboard");
+    const postData = await User.findByPk(1, {
+        attributes: { exclude: 'password' },
+        include: [{ model: Post }],
+    });
+    const posts = postData.get({ plain:true }).posts;
+
+    res.render("dashboard", {
+        posts
+    });
 });
 
 router.get('/thread/:id', async (req, res) => {
@@ -38,7 +46,13 @@ router.get('/newpost', async (req, res) => {
 });
 
 router.get('/editpost/:id', async (req, res) => {
-    res.render("editpost");
+    const postData = await Post.findByPk(req.params.id);
+    const post = postData.get({ plain: true })
+    console.log(post)
+
+    res.render("editpost", {
+        post
+    });
 });
 
 module.exports = router 
