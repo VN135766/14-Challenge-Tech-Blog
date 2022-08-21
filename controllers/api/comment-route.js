@@ -39,8 +39,10 @@ router.post('/', async (req, res) => {
         if (req.body.content) {
             const commentData = await Comment.create({
                 content: req.body.content,
-            })
-            res.status(200).json(commentData)
+                post_id: req.body.post_id,
+                user_id: req.body.user_id,
+            });
+            res.status(200).json(commentData);
         } else {
             res.status(400).json({ message: 'You have to enter content into your comment' })
         }
