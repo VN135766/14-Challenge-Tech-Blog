@@ -13,30 +13,46 @@ router.get("/", async (req, res) => {
     const posts = postData.map(post => post.get({ plain: true }));
 
     res.render("homepage", {
-        posts
+        posts,
+        loggedIn: req.session.logged_in,
+        username: req.session.username,
+        user_id: req.session.user_id,
     });
 });
 
 router.get('/login', async (req, res) => {
-    res.render("login");
+    res.render("login", {
+        loggedIn: req.session.logged_in,
+        username: req.session.username,
+        user_id: req.session.user_id,
+    });
 });
 
 router.get('/signup', async (req, res) => {
-    res.render("signup");
+    res.render("signup", {
+        loggedIn: req.session.logged_in,
+        username: req.session.username,
+        user_id: req.session.user_id,
+    });
 });
 
 router.get('/dashboard', async (req, res) => {
-    const postData = await User.findByPk(1, {
-        attributes: { exclude: 'password' },
-        include: [{ model: Post }],
-    });
-    const posts = postData.get({ plain: true }).posts;
-    req.session.logged_in = true
+    if (req.session.logged_in) {
+        const postData = await User.findByPk(req.session.user_id, {
+            attributes: { exclude: 'password' },
+            include: [{ model: Post }],
+        });
+        const posts = postData.get({ plain: true }).posts;
+        res.render("dashboard", {
+            posts,
+            loggedIn: req.session.logged_in,
+            username: req.session.username,
+            user_id: req.session.user_id,
+        });
+    } else {
+        res.redirect('/login')
+    }
 
-    res.render("dashboard", {
-        posts,
-        loggedIn: req.session.logged_in
-    });
 });
 
 router.get('/thread/:id', async (req, res) => {
@@ -44,9 +60,9 @@ router.get('/thread/:id', async (req, res) => {
         where: {
             post_id: req.params.id
         }, include: [{
-            model:User,
+            model: User,
             attributes: {
-                exclude:'password',
+                exclude: 'password',
             },
         }],
     });
@@ -69,11 +85,17 @@ router.get('/thread/:id', async (req, res) => {
         post,
         comments,
         loggedIn: req.session.logged_in,
+        username: req.session.username,
+        user_id: req.session.user_id,
     });
 });
 
 router.get('/newpost', async (req, res) => {
-    res.render("newpost");
+    res.render("newpost", {
+        loggedIn: req.session.logged_in,
+        username: req.session.username,
+        user_id: req.session.user_id,
+    });
 });
 
 router.get('/editpost/:id', async (req, res) => {
@@ -82,7 +104,10 @@ router.get('/editpost/:id', async (req, res) => {
     console.log(post)
 
     res.render("editpost", {
-        post
+        post,
+        loggedIn: req.session.logged_in,
+        username: req.session.username,
+        user_id: req.session.user_id,
     });
 });
 router.get('/logout', async (req, res) => {

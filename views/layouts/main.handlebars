@@ -7,15 +7,20 @@
     <title>Tech Blog</title>
 </head>
 <body>
-     <nav class="d-flex gap-3">
-        <a class="anchor" href="/">Home</a>
-        <a class="anchor" href="/dashboard">Dashboard</a>
-        {{#if loggedIn}}
-        <a class="anchor" href="/logout">Logout</a>
-        {{else}}
-        <a class="anchor" href="/login">Login</a>
+<div>
+        <nav>
+            <a class="anchor" href="/">Home</a>
+            <a class="anchor" href="/dashboard">Dashboard</a>
+            {{#if loggedIn}}
+            <a class="anchor" href="/logout">Logout</a>
+            {{else}}
+            <a class="anchor" href="/login">Login</a>
+            {{/if}}
+        </nav>
+        {{#if username}}
+            <h1 id="welcomeName" class='fs-5' data-user-id="{{user_id}}">Hello {{username}}</h1>
         {{/if}}
-    </nav>
+   </div>
     {{{ body }}}
 </body>
 </html>

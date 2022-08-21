@@ -2,7 +2,7 @@ const createPost = async (e) => {
     e.preventDefault();
     const titleInput = document.querySelector('#newTitle').value.trim();
     const contentInput = document.querySelector('#newContent').value.trim();
-    const userID = 1;
+    const userID = document.querySelector('#welcomeName').getAttribute('data-user-id');
     const response = await fetch('/api/post', {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },

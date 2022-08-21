@@ -16,14 +16,18 @@ const sess = {
     cookie: {
         maxAge: 8000
     },
-    resave:false,
-    saveUninitialized: true,
-    store: new SequelizeStore({ db:sequelize }),
+    httpOnly: false,
+    resave:true,
+    rolling: true,
+    saveUninitialized: false,
+    store: new SequelizeStore({ db:sequelize, checkExpirationInterval:8000 }),
 };
 
 app.use(session(sess))
 
-const hbs = exphbs.create({})
+const helpers = require('./utils/helpers');
+
+const hbs = exphbs.create({ helpers });
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');

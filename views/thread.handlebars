@@ -4,7 +4,7 @@
     <div class="post">
         <div>
 <h2 class="post_title">{{post.title}}</h2>
-            <h6 class="post_info">Posted by {{post.user.user}} on {{post.createdAt}}</h6>
+            <h6 class="post_info">Posted by {{post.user.user}} on {{format_date post.createdAt}}</h6>
         </div>
 <h3 class="post_description">{{post.description}}</h3>
     </div>
@@ -15,7 +15,7 @@
             <form class="post_description">
                 <div>
                     <h6>{{this.content}}</h6>
-                    <h6>--{{user.user}}, {{this.createdAt}}</h6>
+                    <h6>--{{user.user}}, {{format_date this.createdAt}}</h6>
                 </div>
             </form>
         </div>
