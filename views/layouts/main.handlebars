@@ -10,8 +10,11 @@
      <nav class="d-flex gap-3">
         <a class="anchor" href="/">Home</a>
         <a class="anchor" href="/dashboard">Dashboard</a>
+        {{#if loggedIn}}
+        <a class="anchor" href="/logout">Logout</a>
+        {{else}}
         <a class="anchor" href="/login">Login</a>
-        <a>Logout</a>
+        {{/if}}
     </nav>
     {{{ body }}}
 </body>

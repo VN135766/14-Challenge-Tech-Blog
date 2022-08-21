@@ -3,22 +3,38 @@
 <main id="homepage_background">
     <div class="post">
         <div>
-            <h2 class="post_title"></h2>
-            <h6 class="post_info"></h6>
+<h2 class="post_title">{{post.title}}</h2>
+            <h6 class="post_info">Posted by {{post.user.user}} on {{post.createdAt}}</h6>
         </div>
-        <h3 class="post_description"></h3>
+<h3 class="post_description">{{post.description}}</h3>
     </div>
+    <div id="commentSection">
+        {{#each comments}}
+        <div class="post">
+            <div class="post_header"></div>
+            <form class="post_description">
+                <div>
+                    <h6>{{this.content}}</h6>
+                    <h6>--{{user.user}}, {{this.createdAt}}</h6>
+                </div>
+            </form>
+        </div>
+        {{/each}}
+    </div>
+    {{#if loggedIn}}
     <div class="post">
         <div class="post_header">
         </div>
         <form>
             <div>
                 <label for=".commentInput">Comment</label>
-                <textarea type="text" rows="3" class="commentInput"></textarea>
+                <textarea type="text" rows="2" class="commentInput"></textarea>
             </div>
             <input type="submit" id="submitCommentButton">
         </form>
     </div>
 </main>
 
-<script src="/js/postComment.js"></script>
+ <script src="/js/postComment.js"></script>
+    {{/if}}
+</main>
