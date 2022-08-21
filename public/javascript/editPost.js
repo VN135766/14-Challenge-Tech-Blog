@@ -3,7 +3,7 @@ const updatePost = async (e) => {
     const newTitleInput = document.querySelector('#editTitle').value.trim();
     const newContentInput = document.querySelector('#editContent').value.trim();
     const postID = window.location.pathname.split('/').pop();
-    const userID = 1;
+    const userID = document.querySelector('#welcomeName').getAttribute('data-user-id');
 
     const response = await fetch(`/api/post/${postID}`, {
         method: 'PUT',
