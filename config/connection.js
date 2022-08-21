@@ -1,8 +1,8 @@
 const Sequelize = require("sequelize");
+require('dotenv').config({ path: require('find-config')('.env') });
 
-require("dotenv").config();
 // create connection to our db
-const sequelize = process.env.JAWSDB_URL
+let sequelize = process.env.JAWSDB_URL
   ? new Sequelize(process.env.JAWSDB_URL)
   : new Sequelize(process.env.DB_NAME, process.env.DB_USER, '##Mybabysarah88', {
       host: "localhost",

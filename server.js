@@ -12,15 +12,15 @@ const sequelize = require('./config/connection');
 const app = express();
 const PORT = process.env.PORT || 3001;
 const sess = {
-    secret: process.env.session_key,
+    secret: 987654321,
     cookie: {
-        maxAge: 8000
+        maxAge: 900000
     },
     httpOnly: false,
     resave:true,
     rolling: true,
     saveUninitialized: false,
-    store: new SequelizeStore({ db:sequelize, checkExpirationInterval:8000 }),
+    store: new SequelizeStore({ db:sequelize, checkExpirationInterval:90000 }),
 };
 
 app.use(session(sess))
