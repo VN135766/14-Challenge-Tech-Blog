@@ -1,3 +1,5 @@
+
+
 const router = require('express').Router();
 const { Comment } = require('../../models');
 
@@ -25,7 +27,7 @@ router.get('/:id', async (req, res) => {
             }
         })
         if (!commentData) {
-            res.status(400).json({ message: 'There are no comments associated with that id' })
+            res.status(400).json({ message: 'There are no comments associated with that id'})
         }
         res.status(200).json(commentData)
     } catch (err) {
@@ -44,7 +46,7 @@ router.post('/', async (req, res) => {
             });
             res.status(200).json(commentData);
         } else {
-            res.status(400).json({ message: 'You have to enter content into your comment' })
+            res.status(400).json({ message: 'You have to enter content into your comment'})
         }
     } catch (err) {
         res.status(500).json(err)
@@ -59,7 +61,7 @@ router.put('/:id', async (req, res) => {
             },
         });
         if (!commentData) {
-            res.status(400).json({ message: 'There are no comments associated with that id' })
+            res.status(400).json({ message: 'There are no comments associated with that id'  })
             return
         }
         res.status(200).json({ message: `Comment #${req.params.id} has been updated` })
@@ -76,7 +78,7 @@ router.delete('/:id', async (req, res) => {
             }
         })
         if (!commentData) {
-            res.status(400).json({ message: 'There are no comments associated with that id' })
+            res.status(400).json({ message: 'There are no comments associated with that id'  })
         } else {
             res.status(200).json({ message: `Comment #${req.params.id} has been deleted` })
         }

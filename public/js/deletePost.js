@@ -8,7 +8,7 @@ const deletePost = async (e) => {
     if (response.ok) {
         window.location.assign('/dashboard');
     } else {
-        alert('Cannot delete post, try again');
+        alert('Unable to delete post');
     }
 }
 

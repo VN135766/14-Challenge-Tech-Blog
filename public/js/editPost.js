@@ -4,7 +4,7 @@ const updatePost = async (e) => {
     const newContentInput = document.querySelector('#editContent').value.trim();
     const postID = window.location.pathname.split('/').pop();
     const userID = document.querySelector('#welcomeName').getAttribute('data-user-id');
-
+    
     const response = await fetch(`/api/post/${postID}`, {
         method: 'PUT',
         headers: { 'Content-type': 'application/json' },
@@ -17,7 +17,7 @@ const updatePost = async (e) => {
     if (response.ok) {
         window.location.assign('/dashboard');
     } else {
-        alert('cannot update post');
+        alert('unable to update post');
     };
 };
 

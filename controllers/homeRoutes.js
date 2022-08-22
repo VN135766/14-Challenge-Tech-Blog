@@ -1,3 +1,4 @@
+
 const router = require('express').Router();
 const { User, Post, Comment } = require('../models');
 
@@ -9,8 +10,9 @@ router.get("/", async (req, res) => {
                 exclude: 'password'
             }
         }]
-    })
+    });
     const posts = postData.map(post => post.get({ plain: true }));
+    console.log(posts);
 
     res.render("homepage", {
         posts,
@@ -37,6 +39,7 @@ router.get('/signup', async (req, res) => {
 });
 
 router.get('/dashboard', async (req, res) => {
+    console.log(req.session.user_id)
     if (req.session.logged_in) {
         const postData = await User.findByPk(req.session.user_id, {
             attributes: { exclude: 'password' },
@@ -67,7 +70,6 @@ router.get('/thread/:id', async (req, res) => {
         }],
     });
     const post = postData.get({ plain: true })
-    console.log(post);
 
 
     const commentData = await Comment.findAll({
@@ -81,6 +83,8 @@ router.get('/thread/:id', async (req, res) => {
         }],
     });
     const comments = commentData.map(comment => comment.get({ plain: true }))
+
+
     res.render("thread", {
         post,
         comments,
@@ -100,6 +104,7 @@ router.get('/newpost', async (req, res) => {
 
 router.get('/editpost/:id', async (req, res) => {
     const postData = await Post.findByPk(req.params.id);
+
     const post = postData.get({ plain: true })
     console.log(post)
 
@@ -110,9 +115,10 @@ router.get('/editpost/:id', async (req, res) => {
         user_id: req.session.user_id,
     });
 });
+
 router.get('/logout', async (req, res) => {
     req.session.destroy();
     res.redirect('/')
 })
 
-module.exports = router 
+module.exports = router

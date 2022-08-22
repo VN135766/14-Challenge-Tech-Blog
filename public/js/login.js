@@ -1,3 +1,4 @@
+
 const logIn = async (e) => {
     e.preventDefault();
     const usernameInput = document.querySelector('#usernameSignIn').value.trim();
