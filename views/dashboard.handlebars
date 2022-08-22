@@ -1,13 +1,15 @@
+
 {{>yourdashboard-header}}
 <main id="homepage">
     <div id="yourPostsContainer">
-{{#each posts as |post|}}
-        <div" data-post-id="{{id}}">
+        {{#each posts as |post|}}
+        <div data-post-id="{{id}}">
             <h3>{{title}}</h3>
-<h3>{{format_date createdAt}}</h3>
+            <h3>{{format_date createdAt}}</h3>
         </div>
         {{/each}}
     </div>
-    <button id="createPostButton">+ New Post</button>
-</main> 
-<script src="/js/dashboardRedirect.js"></script> 
+    <button id="createButton">+ New Post</button>
+</main>
+
+<script src="/js/dashboardRedirect.js"></script>
