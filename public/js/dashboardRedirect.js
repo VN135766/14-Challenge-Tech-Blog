@@ -4,6 +4,6 @@ postList.forEach(post => post.addEventListener('click', () => {
     window.location.assign(`/editpost/${post.getAttribute('data-post-id')}`);
 }));
 
-document.querySelector('#createButton').addEventListener('click', () => {
+document.querySelector('#createPostButton').addEventListener('click', () => {
     window.location.assign('/newpost');
 });

@@ -12,16 +12,14 @@ const sequelize = require('./config/connection');
 const app = express();
 const PORT = process.env.PORT || 3001;
 const sess = {
-    secret: 987654321,
-    cookie: {
-        maxAge: 900000
-    },
-    httpOnly: false,
-    resave:true,
-    rolling: true,
-    saveUninitialized: false,
-    store: new SequelizeStore({ db:sequelize, checkExpirationInterval:90000 }),
-};
+    secret: 'Super secret secret',
+    cookie: {},
+    resave: false,
+    saveUninitialized: true,
+    store: new SequelizeStore({
+      db: sequelize
+    })
+  };
 
 app.use(session(sess))
 

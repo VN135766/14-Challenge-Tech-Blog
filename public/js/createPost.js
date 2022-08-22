@@ -1,7 +1,7 @@
 const createPost = async (e) => {
     e.preventDefault();
-    const titleInput = document.querySelector('#newTitle').value.trim();
-    const contentInput = document.querySelector('#newContent').value.trim();
+    const titleInput = document.querySelector('#newPostTitle').value.trim();
+    const contentInput = document.querySelector('#newPostContent').value.trim();
     const userID = document.querySelector('#welcomeName').getAttribute('data-user-id');
     const response = await fetch('/api/post', {
         method: 'POST',
@@ -19,4 +19,4 @@ const createPost = async (e) => {
     }
 }
 
-document.querySelector('#submitButton').addEventListener('click', createPost);
+document.querySelector('#submitPostButton').addEventListener('click', createPost);

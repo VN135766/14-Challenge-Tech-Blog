@@ -1,8 +1,7 @@
-
 const logIn = async (e) => {
     e.preventDefault();
-    const usernameInput = document.querySelector('#usernameSignIn').value.trim();
-    const passwordInput = document.querySelector('#passwordSignIn').value.trim();
+    const usernameInput = document.querySelector('#usernameInputSignIn').value.trim();
+    const passwordInput = document.querySelector('#passwordInputSignIn').value.trim();
 
     if (usernameInput && passwordInput) {
         const response = await fetch('/api/users/login', {

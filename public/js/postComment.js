@@ -1,5 +1,3 @@
-
-
 const postComment = async (e) => {
     e.preventDefault();
     const commentInput = document.querySelector('.commentInput').value.trim();

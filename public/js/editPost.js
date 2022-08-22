@@ -1,7 +1,7 @@
 const updatePost = async (e) => {
     e.preventDefault()
-    const newTitleInput = document.querySelector('#editTitle').value.trim();
-    const newContentInput = document.querySelector('#editContent').value.trim();
+    const newTitleInput = document.querySelector('#editPostTitle').value.trim();
+    const newContentInput = document.querySelector('#editPostContent').value.trim();
     const postID = window.location.pathname.split('/').pop();
     const userID = document.querySelector('#welcomeName').getAttribute('data-user-id');
     
@@ -21,4 +21,4 @@ const updatePost = async (e) => {
     };
 };
 
-document.querySelector('#updateButton').addEventListener('click', updatePost);
+document.querySelector('#updatePostButton').addEventListener('click', updatePost);
